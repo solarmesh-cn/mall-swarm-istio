@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  namespace: mall
+  labels:
+    app: elasticsearch
+    version: v1
+spec:
+  selector:
+    matchLabels:
+      app: elasticsearch
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+        version: v1
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: elasticsearch
+          image: elasticsearch:7.9.2
+          ports:
+            - containerPort: 9200
+              name: http-9200
+            - containerPort: 9300
+              name: http-9300
+          env:
+            - name: discovery.type
+              value: single-node
+            - name: http.cors.enabled
+              value: "true"
+            - name: http.cors.allow-origin
+              value: "*"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  namespace: mall
+  labels:
+    app: elasticsearch
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9200
+      name: http-9200
+    - port: 9300
+      name: http-9300
+  selector:
+    app: elasticsearch

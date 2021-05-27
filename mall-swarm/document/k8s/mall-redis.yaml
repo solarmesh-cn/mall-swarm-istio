@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: mall
+  labels:
+    app: redis
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: redis
+  template:
+    metadata:
+      labels:
+        name: redis
+        app: redis
+        version: v1
+    spec:
+      containers:
+        - name: redis
+          image: redis
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 6379
+              name: redis
+              protocol: TCP
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis
+  namespace: mall
+  labels:
+    app: redis
+spec:
+  type: ClusterIP
+  ports:
+    - name: redis-6379
+      port: 6379
+      targetPort: 6379
+      protocol: TCP
+  selector:
+    name: redis

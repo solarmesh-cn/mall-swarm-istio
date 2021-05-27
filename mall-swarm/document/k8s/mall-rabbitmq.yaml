@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+  namespace: mall
+  labels:
+    name: rabbitmq
+    app: rabbitmq
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+        version: v1
+    spec:
+      containers:
+        - image: rabbitmq:3.7.15-management
+          env:
+            - name: RABBITMQ_DEFAULT_USER
+              value: guest
+            - name: RABBITMQ_DEFAULT_PASS
+              value: guest
+          imagePullPolicy: Always
+          name: rabbitmq
+          ports:
+            - containerPort: 15672
+              name: rabbit15672
+              protocol: TCP
+            - containerPort: 5672
+              name: rabbit5672
+              protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  namespace: mall
+  labels:
+    app: rabbitmq
+spec:
+  ports:
+    - name: tcp-15672
+      port: 15672
+      protocol: TCP
+      targetPort: 15672
+    - name: tcp-5672
+      port: 5672
+      protocol: TCP
+      targetPort: 5672
+  selector:
+    app: rabbitmq
+  type: ClusterIP

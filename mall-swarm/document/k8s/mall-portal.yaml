@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mall-portal
+  namespace: mall
+  labels:
+    app: mall-portal
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mall-portal
+  template:
+    metadata:
+      labels:
+        app: mall-portal
+        version: v1
+    spec:
+      containers:
+        - name: mall-portal
+          # 指定Docker Hub中的镜像地址
+          image: harbor.cloud2go.cn/macrodocker/mall-portal:1.0-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8085
+          env:
+            # 指定环境
+            - name: spring.profiles.active
+              value: prod
+            # 指定时区
+            - name: TZ
+              value: Asia/Shanghai
+            # 指定Nacos地址
+            - name: spring.cloud.nacos.discovery.server-addr
+              value: http://nacos-headless:8848
+            - name: spring.cloud.nacos.config.server-addr
+              value: http://nacos-headless:8848
+            - name: spring_datasource_url
+              value: jdbc:mysql://mall-mysql:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+            - name: spring_elasticsearch_rest_uris
+              value: elasticsearch:9200
+            - name: spring_redis_host
+              value: redis
+            - name: spring_rabbitmq_host
+              value: rabbitmq
+            - name: spring_rabbitmq_username
+              value: guest
+            - name: spring_rabbitmq_password
+              value: guest
+            - name: spring_data_mongodb_host
+              value: mongodb
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-portal
+  namespace: mall
+  labels:
+    app: mall-portal
+spec:
+  type: ClusterIP
+  selector:
+    app: mall-portal
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8085
+      targetPort: 8085

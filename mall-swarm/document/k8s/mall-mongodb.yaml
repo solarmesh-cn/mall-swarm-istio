@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: mall
+  labels:
+    name: mongodb
+    app: mongodb
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongodb
+  template:
+    metadata:
+      labels:
+        name: mongodb
+        app: mongodb
+        version: v1
+    spec:
+      containers:
+        - name: mongodb
+          image: mongo:4.2.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 27017
+              name: mongo-27017
+              protocol: TCP
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: mongodb
+    app: mongodb
+  name: mongodb
+  namespace: mall
+spec:
+  type: ClusterIP
+  ports:
+    - name: mongo-27017
+      port: 27017
+      targetPort: 27017
+  selector:
+    name: mongodb
