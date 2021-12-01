@@ -79,10 +79,11 @@ public class PmsBrandServiceImpl implements PmsBrandService {
         PmsBrandExample pmsBrandExample = new PmsBrandExample();
         pmsBrandExample.setOrderByClause("sort desc");
         PmsBrandExample.Criteria criteria = pmsBrandExample.createCriteria();
-        if (!StringUtils.isEmpty(keyword)) {
-            criteria.andNameLike("%" + keyword + "%");
-        }
-        return brandMapper.selectByExample(pmsBrandExample);
+        throw new RuntimeException("Oh My God");
+//        if (!StringUtils.isEmpty(keyword)) {
+//            criteria.andNameLike("%" + keyword + "%");
+//        }
+//        return brandMapper.selectByExample(pmsBrandExample);
     }
 
     @Override

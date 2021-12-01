@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis
-  namespace: mall
   labels:
     app: redis
     version: v1
@@ -33,7 +32,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: redis
-  namespace: mall
   labels:
     app: redis
 spec:
