@@ -33,7 +33,7 @@ spec:
             - name: spring_datasource_url
               value: jdbc:mysql://mall-mysql:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
             - name: spring_elasticsearch_rest_uris
-              value: elasticsearch-service:9200
+              value: elasticsearch:9200
 
 ---
 
