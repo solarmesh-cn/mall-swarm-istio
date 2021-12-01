@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * Created by macro on 2020/7/16.
  */
-@FeignClient(name = "mall-portal", url = "${host.mall-portal}")
+@FeignClient(name = "mall-portal")
 public interface UmsMemberService {
     @GetMapping("/sso/loadByUsername")
     UserDto loadUserByUsername(@RequestParam String username);

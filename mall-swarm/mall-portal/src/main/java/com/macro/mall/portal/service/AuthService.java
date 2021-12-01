@@ -11,7 +11,7 @@ import java.util.Map;
  * 认证服务远程调用
  * Created by macro on 2020/7/19.
  */
-@FeignClient(name = "mall-auth", url = "${host.mall-auth}")
+@FeignClient(name = "mall-auth")
 public interface AuthService {
 
     @PostMapping(value = "/oauth/token")

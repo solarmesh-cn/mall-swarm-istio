@@ -3,8 +3,9 @@ package com.macro.mall;
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-//@EnableDiscoveryClient
+@EnableEurekaClient
 @EnableAdminServer
 @SpringBootApplication
 public class MallMonitorApplication {

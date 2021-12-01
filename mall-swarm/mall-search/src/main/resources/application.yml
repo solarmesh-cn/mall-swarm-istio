@@ -33,6 +33,9 @@ management: #开启SpringBoot Admin的监控
   endpoint:
     health:
       show-details: always
-
-
-
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka  ## 注册到 eureka

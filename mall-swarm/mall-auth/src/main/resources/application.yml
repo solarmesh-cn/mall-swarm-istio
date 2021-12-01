@@ -15,3 +15,9 @@ ribbon:
 host:
   mall-admin: http://mall-admin:8080
   mall-portal: http://mall-portal:8085
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka  ## 注册到 eureka
