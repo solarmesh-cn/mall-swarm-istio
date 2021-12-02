@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb
-  namespace: mall
   labels:
     name: mongodb
     app: mongodb
@@ -37,7 +36,6 @@ metadata:
     name: mongodb
     app: mongodb
   name: mongodb
-  namespace: mall
 spec:
   type: ClusterIP
   ports:

@@ -11,3 +11,9 @@ spring:
         ignored-services: ${spring.application.name}
 server:
   port: 8101
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka  ## 注册到 eureka
