@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mall-monitor" />
+        <module name="mall-mbg" />
+        <module name="mall-common" />
+        <module name="mall-auth" />
+        <module name="mall-admin" />
+        <module name="mall-search" />
+        <module name="mall-gateway" />
+        <module name="mall-demo" />
+        <module name="mall-portal" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mall-admin" target="8" />
+      <module name="mall-auth" target="8" />
+      <module name="mall-common" target="8" />
+      <module name="mall-demo" target="8" />
+      <module name="mall-gateway" target="8" />
+      <module name="mall-mbg" target="8" />
+      <module name="mall-monitor" target="8" />
+      <module name="mall-portal" target="8" />
+      <module name="mall-search" target="8" />
+      <module name="mall-swarm" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mall-admin" options="-parameters" />
+      <module name="mall-auth" options="-parameters" />
+      <module name="mall-common" options="-parameters" />
+      <module name="mall-demo" options="-parameters" />
+      <module name="mall-gateway" options="-parameters" />
+      <module name="mall-mbg" options="-parameters" />
+      <module name="mall-monitor" options="-parameters" />
+      <module name="mall-portal" options="-parameters" />
+      <module name="mall-search" options="-parameters" />
+    </option>
+  </component>
+</project>
