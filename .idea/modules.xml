@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mall-swarm/mall-admin/mall-admin.iml" filepath="$PROJECT_DIR$/mall-swarm/mall-admin/mall-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-swarm/mall-auth/mall-auth.iml" filepath="$PROJECT_DIR$/mall-swarm/mall-auth/mall-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-swarm/mall-common/mall-common.iml" filepath="$PROJECT_DIR$/mall-swarm/mall-common/mall-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-swarm/mall-demo/mall-demo.iml" filepath="$PROJECT_DIR$/mall-swarm/mall-demo/mall-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-swarm/mall-gateway/mall-gateway.iml" filepath="$PROJECT_DIR$/mall-swarm/mall-gateway/mall-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-swarm/mall-mbg/mall-mbg.iml" filepath="$PROJECT_DIR$/mall-swarm/mall-mbg/mall-mbg.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-swarm/mall-monitor/mall-monitor.iml" filepath="$PROJECT_DIR$/mall-swarm/mall-monitor/mall-monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-swarm/mall-portal/mall-portal.iml" filepath="$PROJECT_DIR$/mall-swarm/mall-portal/mall-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-swarm/mall-search/mall-search.iml" filepath="$PROJECT_DIR$/mall-swarm/mall-search/mall-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mall-swarm/mall-swarm.iml" filepath="$PROJECT_DIR$/mall-swarm/mall-swarm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/mall-swarm-istio.iml" filepath="$PROJECT_DIR$/.idea/mall-swarm-istio.iml" />
+    </modules>
+  </component>
+</project>
