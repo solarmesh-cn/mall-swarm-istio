@@ -28,9 +28,9 @@ spec:
             - name: TZ
               value: Asia/Shanghai
             # 指定Nacos地址
-            - name: spring.cloud.nacos.discovery.server-addr
+            - name: SPRING_CLOUD_NACOS_DISCOVERY_SERVERADDR
               value: http://nacos:8849
-            - name: spring.cloud.nacos.config.server-addr
+            - name: SPRING_CLOUD_NACOS_CONFIG_SERVERADDR
               value: http://nacos:8849
             - name: spring_datasource_url
               value: jdbc:mysql://mall-mysql:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
