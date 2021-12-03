@@ -11,7 +11,7 @@ mall-swarm:
 
 mall-admin-web:
 
-改动了BASE_API，需要使其指向集群
+改动了BASE_API，需要使其指向集群内的gateway服务
 
 ## 使用方法
 
@@ -20,22 +20,32 @@ mall-admin-web:
 * k8s集群
 * 安装istio
 
+### 创建namespace
+
+```bash
+kubectl create ns mall
+```
+
+### 部署基础设施
+
+```bash
+kubectl apply -n mall -f mall-swarm/document/k8s/infra
+```
+
+### 导入sql
+
+连接集群 nodeport 33066端口上的mysql，导入 mall-swarm/document/sql 下面的sql文件
+
 ### 部署mall-swarm
 
 ```bash
 kubectl create ns mall
-kubectl apply -f mall-swarm/document/k8s/ -n mall
+kubectl apply -n mall -f mall-swarm/document/k8s/service
 ```
 
 ### 接入sidecar
 
-使用istio的`namespace`接入手段即可
-
-### 导入sql
-
-连接集群nodeport 33066端口上的mysql，导入 mall-swarm/document/sql 下面的sql文件
-
-重启 mall-admin mall-portal mall-search 服务
+将 `gateway`，`mall-admin`，`mall-auth`，`mall-portal`，`mall-monitor`，`mall-search` 服务接入sidecar
 
 ### 注册
 
@@ -47,7 +57,7 @@ kubectl apply -f mall-swarm/document/k8s/ -n mall
 
 ### 部署mall-admin-web
 
-mall-admin-web推荐本地启动，config/dev.env.js配置到集群gateway
+mall-admin-web推荐本地启动，config/dev.env.js配置到集群内的gateway服务
 
 访问mall-admin-web的页面即可
 
