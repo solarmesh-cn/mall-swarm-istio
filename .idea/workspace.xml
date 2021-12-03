@@ -25,10 +25,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c7448a5-eb66-410c-b6ba-786f51113ae8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mall-admin-web/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-web/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-admin-web/config/dev.env.js" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin-web/config/dev.env.js" afterDir="false" />
-    </list>
+    <list default="true" id="0c7448a5-eb66-410c-b6ba-786f51113ae8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,6 +76,7 @@
       <workItem from="1638443708163" duration="303000" />
       <workItem from="1638445154914" duration="381000" />
       <workItem from="1638496495502" duration="80000" />
+      <workItem from="1638515703668" duration="89000" />
     </task>
     <servers />
   </component>
