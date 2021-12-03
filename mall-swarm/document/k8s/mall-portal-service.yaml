@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-portal
+  labels:
+    app: mall-portal
+spec:
+  type: ClusterIP
+  selector:
+    app: mall-portal
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8085
+      targetPort: 8085

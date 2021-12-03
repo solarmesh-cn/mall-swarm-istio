@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-monitor
+  labels:
+    app: mall-monitor
+spec:
+  type: ClusterIP
+  selector:
+    app: mall-monitor
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8101
+      targetPort: 8101
