@@ -20,7 +20,7 @@ spec:
       containers:
         - name: mall-auth
           # 指定Docker Hub中的镜像地址
-          image: registry.cn-shenzhen.aliyuncs.com/k8small/mall-auth:1.0-SNAPSHOT
+          image: registry.cn-shenzhen.aliyuncs.com/k8small/mall-auth:1.0-eureka
           imagePullPolicy: Always
           ports:
             - containerPort: 8401
@@ -28,9 +28,15 @@ spec:
             # 指定环境
             - name: spring.profiles.active
               value: prod
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
             # 指定时区
             - name: TZ
               value: Asia/Shanghai
+            - name: eureka_client_serviceUrl_defaultZone
+              value: http://eureka.${NAMESPACE}:8761/eureka
 
 ---
 

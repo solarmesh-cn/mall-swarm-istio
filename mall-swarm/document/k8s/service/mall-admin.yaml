@@ -20,7 +20,7 @@ spec:
       containers:
         - name: mall-admin
           # 指定Docker Hub中的镜像地址
-          image: registry.cn-shenzhen.aliyuncs.com/k8small/mall-admin:1.0-SNAPSHOT
+          image: registry.cn-shenzhen.aliyuncs.com/k8small/mall-admin:1.0-eureka
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -31,16 +31,22 @@ spec:
             # 指定时区
             - name: TZ
               value: Asia/Shanghai
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
             - name: spring_datasource_url
-              value: jdbc:mysql://mall-mysql:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+              value: jdbc:mysql://mall-mysql.${NAMESPACE}:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
             - name: spring_redis_host
-              value: redis
+              value: redis.${NAMESPACE}
             - name: spring_rabbitmq_host
-              value: rabbitmq
+              value: rabbitmq.${NAMESPACE}
             - name: spring_rabbitmq_username
               value: guest
             - name: spring_rabbitmq_password
               value: guest
+            - name: eureka_client_serviceUrl_defaultZone
+              value: http://eureka.${NAMESPACE}:8761/eureka
 ---
 
 apiVersion: v1
