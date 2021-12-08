@@ -19,7 +19,7 @@ spec:
       containers:
         - name: mall-search
           # 指定Docker Hub中的镜像地址
-          image: registry.cn-shenzhen.aliyuncs.com/k8small/mall-search:1.0-SNAPSHOT
+          image: registry.cn-shenzhen.aliyuncs.com/k8small/mall-search:1.0-eureka
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
@@ -27,13 +27,19 @@ spec:
             # 指定环境
             - name: spring.profiles.active
               value: prod
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
             # 指定时区
             - name: TZ
               value: Asia/Shanghai
             - name: spring_datasource_url
-              value: jdbc:mysql://mall-mysql:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+              value: jdbc:mysql://mall-mysql.${NAMESPACE}:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
             - name: spring_elasticsearch_rest_uris
-              value: elasticsearch:9200
+              value: elasticsearch.${NAMESPACE}:9200
+            - name: eureka_client_serviceUrl_defaultZone
+              value: http://eureka.${NAMESPACE}:8761/eureka
 
 ---
 

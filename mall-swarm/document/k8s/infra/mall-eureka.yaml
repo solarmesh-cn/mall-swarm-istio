@@ -19,7 +19,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: eureka
-          image: springcloud/eureka:latest
+          image: registry.cn-shenzhen.aliyuncs.com/k8small/eureka:1.4.7
           ports:
             - containerPort: 8761
 
