@@ -9,39 +9,33 @@ spring:
           lower-case-service-id: true #使用小写service-id
       routes: #配置路由路径
         - id: mall-auth
-          uri: http://mall-auth:8401
+          uri: lb://mall-auth
           predicates:
             - Path=/mall-auth/**
           filters:
             - StripPrefix=1
         - id: mall-admin
-          uri: http://mall-admin:8080
+          uri: lb://mall-admin
           predicates:
             - Path=/mall-admin/**
           filters:
             - StripPrefix=1
         - id: mall-portal
-          uri: http://mall-portal:8085
+          uri: lb://mall-portal
           predicates:
             - Path=/mall-portal/**
           filters:
             - StripPrefix=1
         - id: mall-search
-          uri: http://mall-search:8081
+          uri: lb://mall-search
           predicates:
             - Path=/mall-search/**
           filters:
             - StripPrefix=1
         - id: mall-demo
-          uri: http://mall-demo
+          uri: lb://mall-demo
           predicates:
             - Path=/mall-demo/**
-          filters:
-            - StripPrefix=1
-        - id: mall-admin-web
-          uri: http://mall-admin-web:8080
-          predicates:
-            - Path=/mall-admin-web/**
           filters:
             - StripPrefix=1
   security:
@@ -79,7 +73,6 @@ secure:
       - "/mall-admin/admin/login"
       - "/mall-admin/admin/register"
       - "/mall-admin/minio/upload"
-      - "/mall-admin-web/**"
 management: #开启SpringBoot Admin的监控
   endpoints:
     web:
